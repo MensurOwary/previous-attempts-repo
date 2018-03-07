@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- First off, we have to select context and mvc namespaces from the Namespaces section below -->
+	<!-- Consequently, we are able to use tags below -->
+	<!-- This tag enables us to use annotations like @Controller, etc.-->
+	<mvc:annotation-driven/> 
+	<!-- This tag scans the provided package for elements with @Component annotation. And ever since, @Controller,
+		@Repository, @Service are the sub-annotations of the @Component, they're included, as well 
+	-->
+	<context:component-scan base-package="com.owary.spring.controller"/>
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+</beans>

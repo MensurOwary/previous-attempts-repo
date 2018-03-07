@@ -1,0 +1,10 @@
+What are classes for?
+	'Organization' is an object that is stored in the database. Its fields corresponds to the given columns
+	'OrganizationDao' is an interface - DAO layer which contains the abstract methods for Persistence Layer related actions such as creata(), delete(), etc.
+	'OrganizationDAOImpl' is an implementation of the 'OrganizationDao' interface in which we have
+				- whole definitions of the abstract methods
+					 - setDataSource(DataSource dataSource) - for establishing a connection
+	'OrganizationRowMapper' is a class that implements RowMapper interface and has only one generic method mapRow in which we define how the fields of the database should be used in order to retrieve an object from it
+	
+					 
+	

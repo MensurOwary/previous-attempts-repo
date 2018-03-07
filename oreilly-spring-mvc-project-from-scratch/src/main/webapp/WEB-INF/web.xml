@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+	<display-name>oreilly-spring-mvc-project-from-scratch</display-name>
+
+	<!-- This is a listener which is going to handle everything that dispatcher 
+		servlet isn't We also need to create a file called 'applicationContext.xml' 
+		in the folder which dispatcher-servlet.xml exists Any bean that is declared 
+		in the 'applicationContext.xml' file can be referenced from the xml files 
+		for the Dispatcher Servlets, whereas other way around isn't possible -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring/applicationContext.xml</param-value>
+	</context-param>
+
+	<!-- Dispatcher Servlet is the primary servlet that accepts and handles 
+		the requests and corresponding responses - it is the Front Controller -->
+
+	<!-- First, create a servlet tag, define name as 'dispatcher' (not strict) 
+		add its class which is in org.springframework.web.servlet.DispatcherServlet 
+		and define its order of execution. Since it's the Front Controller it must 
+		be executed first, therefore it has to load first on startup -->
+
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/dispatcher-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+
+	<!-- Second, create a mapping for it, mention the name of the servlet that 
+		you've just created above. And add url pattern to it. Since it is a front 
+		controller, it must mention the root - '/' -->
+
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<!-- Third, create a 'servletname-servlet.xml' file in the current folder 
+		namely WEB-INF. So, in this case, we have to create 'dispatcher-servlet.xml' 
+		(Spring Bean Configuration File) -->
+
+
+</web-app>

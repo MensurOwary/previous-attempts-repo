@@ -1,0 +1,6 @@
+Building a simple Spring MVC app
+___________________________________________
+1.		Select File > New > New Maven Project > Check 'Create a simple project' and hit Next > Add Necessary Things > Finish
+2.		Right click the project name > Configure > Convert to Faceted Form > Check Dynamic Web Module > Go to Java Build Path > Add new JRE System Library with the latest version of Java > Add Server to the Runtime from Library section > Apply and Okay 
+3.		Create a 'webapp' subfolder in 'src/main' folder. From Preferences (Alt+Enter) > Deployment Assembly > Add > Folder > Choose the 'webapp' folder > Apply and Okay. For generating a 'web.xml' and a WEB-INF folder, Right click on the project name > Java EE Tools > Generate Deployment Desctiptor Stub
+4.		You're done!
